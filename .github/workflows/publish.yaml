@@ -5,10 +5,12 @@ on:
     branches: [ main ]
     paths:
       - 'sdk-alif/**'
+      - '.github/workflows/publish.yaml'
   pull_request:
     branches: [ main ]
     paths:
       - 'sdk-alif/**'
+      - '.github/workflows/publish.yaml'
 
 env:
   reponame: ${{ github.repository_owner }}
@@ -55,7 +57,6 @@ jobs:
           file: ./sdk-alif/Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
           platforms: linux/amd64,linux/arm64
-          #platforms: linux/amd64
           provenance: false
           tags: ghcr.io/${{ env.reponame }}/sdk-alif:${{ matrix.version.name }}
           build-args: |

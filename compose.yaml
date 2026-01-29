@@ -1,6 +1,6 @@
 services:
   B1:
-    image: "ghcr.io/petrih-alifsemi/sdk-alif:zas-main"
+    image: "ghcr.io/alifsemi/sdk-alif:zas-main"
     stdin_open: true
     tty: true
     volumes:
