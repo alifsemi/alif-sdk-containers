@@ -25,7 +25,7 @@ RUN apt update && \
         vim nano less curl openssh-client unzip ruby && \
     apt-get clean && rm -rf /var/lib/apt/lists/* && \
     python3 -m pip install --no-cache-dir --upgrade pip && \
-    pip3 install --no-cache-dir wheel six setuptools west \
+    pip3 install --no-cache-dir wheel six setuptools west gitlint \
         grpcio==1.65.5 grpcio-tools==1.65.5 protobuf==5.27.2 && \
     rm -rf /root/.cache/pip && \
     echo 'if [ "$GH_USER" ]; then echo "machine github.com login ${GH_USER} password ${GH_PASSWORD}" > ~/.netrc ; fi' >> /etc/bash.bashrc && \
