@@ -48,15 +48,17 @@ RUN TOOLCHAIN_ARCH=$(cat /tmp/toolchain_arch.txt) && \
 
 ## Alif SDK
 ARG SDK_URL=https://github.com/alifsemi/sdk-alif.git
-ARG SDK_VERSION=main
-RUN mkdir -p ${SDK_DIR} && cd ${SDK_DIR} && \
-    west init -m ${SDK_URL} --mr ${SDK_VERSION} && \
-    west update && \
-    west zephyr-export && \
-    pip3 install --no-cache-dir -r zephyr/scripts/requirements.txt && \
-    pip3 install --no-cache-dir -r bootloader/mcuboot/scripts/requirements.txt && \
-    chmod -R u+rwX,go+rwX ${SDK_DIR} && \
-    rm -rf /root/.cache/pip
+ARG SDK_VERSION=""
+RUN if [ -n "${SDK_VERSION}" ]; then \
+        mkdir -p ${SDK_DIR} && cd ${SDK_DIR} && \
+        west init -m ${SDK_URL} --mr ${SDK_VERSION} && \
+        west update && \
+        west zephyr-export && \
+        pip3 install --no-cache-dir -r zephyr/scripts/requirements.txt && \
+        pip3 install --no-cache-dir -r bootloader/mcuboot/scripts/requirements.txt && \
+        chmod -R u+rwX,go+rwX ${SDK_DIR} && \
+        rm -rf /root/.cache/pip; \
+    fi
 
 CMD ["/bin/bash"]
 WORKDIR ${SDK_DIR}
