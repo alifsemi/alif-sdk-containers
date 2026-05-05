@@ -60,5 +60,11 @@ RUN if [ -n "${SDK_VERSION}" ]; then \
         rm -rf /root/.cache/pip; \
     fi
 
+# Update Java 21 for Jenkins
+RUN cd /tmp && \
+    wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.deb && \
+    dpkg -i jdk-21_linux-x64_bin.deb && \
+    update-java-alternatives --set  /usr/lib/jvm/jdk-21-oracle-x64
+
 CMD ["/bin/bash"]
 WORKDIR ${SDK_DIR}
