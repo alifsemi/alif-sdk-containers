@@ -30,6 +30,8 @@ jobs:
             { name: "zas-v2.0", sdk: "0.17.0", branch: "v2.0-zas-branch" },
             { name: "zas-v2.1", sdk: "0.17.0", branch: "v2.1-zas-branch" },
             { name: "zas-v2.2", sdk: "0.17.0", branch: "v2.2-zas-branch" },
+            { name: "zas-v2.3", sdk: "0.17.0", branch: "v2.3-zas-branch" },
+            { name: "zas-v2.4", sdk: "0.17.0", branch: "v2.4-zas-branch" },
             { name: "zas-main", sdk: "0.17.0", branch: "main" },
             # upstream does not have a sdk-alif yet, so branch is empty
             { name: "zas-upstream", sdk: "1.0.1", branch: "" },
